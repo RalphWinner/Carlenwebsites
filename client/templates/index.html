@@ -1,0 +1,199 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<style type="text/css">
+  img {width:100%;}
+
+
+
+ .searchbar{
+    margin-bottom: auto;
+    margin-top: auto;
+    height: 60px;
+    background-color: #353b48;
+    border-radius: 10px;
+    padding: 10px;
+    }
+
+    .search_input{
+    color: white;
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 0;
+    caret-color:transparent;
+    line-height: 40px;
+    transition: width 0.4s linear;
+    }
+
+    .searchbar:hover > .search_input{
+    padding: 0 10px;
+    width: 450px;
+    caret-color:red;
+    transition: width 0.4s linear;
+    }
+
+    .searchbar:hover > .search_icon{
+    background: white;
+    color: #e74c3c;
+    }
+
+
+</style>
+
+<section class="testimonial py-5" id="testimonial">
+    <div class="container">
+        <div class="row ">
+            <div class="col-md-4 py-5 bg-primary text-white text-center ">
+                <div class=" ">
+                    <div class="card-body">
+                        <img src="http://www.ansonika.com/mavia/img/registration_bg.svg" style="width:30%">
+                        <h2 class="py-3">Ma base de donnée</h2>
+                        <p>Nombre Total de Client: {{ count }}</p>
+                        <hr>
+                        <div class="searchbar">
+                          <input class="search_input" type="text" name="" placeholder="Search...">
+                        </div>
+                        <hr>
+                        <div style="overflow: auto; height: 820px;">
+                          <ul class="list-group">
+                            {% for user in user_list %}
+                                <li class="list-group-item list-group-item-primary"><a href="#">{{ user.LName }} {{ user.Name }}</a></li>
+                            {% endfor %}
+                          </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 py-5 border">
+                <h4 class="pb-4">Formulaire d'enregistrements d'un nouveau client dans ma base de donnée</h4>
+                <form method="POST" action="/" enctype="multipart/form-data">{% csrf_token %}
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label>Nom</label>
+                        <input id="Name" name="Name" class="form-control" type="text" required>
+                        <label>Prenom</label>
+                        <input id="LName" name="LName" class="form-control" type="text" required>
+                        <label>Fonction</label>
+                        <input id="Fonction" name="Fonction" class="form-control" type="text" required>
+                        <label>Photo</label>
+                        <input id="imgInp" name="imgInp" class="form-control" type="file">
+                      </div>
+                      <div class="form-group col-md-6">
+                        <div id="choose_photo" class="d-flex align-items-center justify-content-center">
+                          <div class="cover-photo d-flex align-items-center justify-content-center" style="position: relative;">
+                            <img src="https://c9h-static.s3.amazonaws.com/media/public/uploaded-photos/300x300/IMG-2018-12-31T192358-ID-UJFO.jpg" class="img-fluid" id="blah" src="#" alt="your image">              
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col-md-12">
+                        <label>Adresse</label>
+                        <input id="Adresse" name="Adresse" class="form-control" type="text">
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label>Date de naissance</labe>
+                        <input id="Date" name="Date" class="form-control" type="date">
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label>Lieu de naissance</label>
+                        <input id="Lieu" name="Lieu" class="form-control" type="text">
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label>Commune</label>
+                        <input id="Commune" name="Commune" class="form-control" type="text">
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label>Departement</label>
+                        <input id="Departement" name="Departement" class="form-control" type="text">
+                      </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                                  <label>Sexe</label>
+                                  <select id="inputState" name="Sexe" class="form-control">
+                                    <option selected value="Masculin"> Masculin </option>
+                                    <option value="Feminin"> Feminin </option>
+                                  </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                                  <label>Statut</label>
+                                  <select id="inputState" name="Statut" class="form-control">
+                                    <option selected value="Celibataire"> Celibataire </option>
+                                    <option value="Marie"> Marie </option>
+                                    <option value="Veuf"> Veuf </option>
+                                    <option value="Divorce"> Divorce </option>
+                                  </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label>Dependant</label>
+                        <input id="Dependant" name="Dependant" class="form-control" type="text">
+                      </div>
+                      <div class="form-group col-md-6">
+                        
+
+
+
+
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label>Telephone Domicile</label>
+                        <input id="Telephone" name="Telephone_1" class="form-control" type="text">
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label>Telephone Portable</label>
+                        <input id="Telephone" name="Telephone_2" class="form-control" type="text">
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col-md-12">
+                        <label>Email</label>
+                        <input id="email" name="email" class="form-control" type="email">
+                      </div>
+                    </div>
+                    <br><br>
+                    <div class="form-row">
+                          <button type="submit" class="btn btn-block btn-outline-info">Enregistrer</button> 
+                    </div>
+                    <br>
+                    <div class="form-row">
+                          <button type="submit" class="btn btn-block btn-outline-Primary">Exporter en Excel</button> 
+                    </div>
+                    <br>
+                    <div class="form-row">
+                          <button type="submit" class="btn btn-block btn-outline-danger">Delete</button> 
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript">
+  function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function (e) {
+                $('#blah').attr('src', e.target.result);
+            }
+            
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    
+    $("#imgInp").change(function(){
+        readURL(this);
+    });
+</script>
